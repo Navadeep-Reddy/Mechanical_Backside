@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Welcome!</title>
+        <link rel ="stylesheet" href="static/request/style.css">
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    </head>
+
+    <body>
+        <header class = "header">
+            <a href = "#" class = "logo">SK MECHANICS.</a>
+            <nav class = "navbar">
+                <a href = "../Landing_Page/index.html" >Home</a>
+                <a href = "../About/index.html">About</a>
+                <a href = "#" >Pending</a>
+            </nav>
+            <div class = "icons">
+                <a href = "#"><i class='bx bxs-phone'></i></a>
+            </div>
+        </header>
+        <section class = "home">
+            <form class = "request">
+                <h1>Select Service</h1>
+                <div class ="dropDown">
+                <select name = "vtype" id = "vtype">
+                    <option disabled selected value="Vehicle">Vehicle</option>
+                    <option>Motorcycle</option>
+                    <option>Car</option>
+                    <option>Bicycle</option>
+                </select>
+                <select name = "repair" id = "repair">
+                    <option disabled selected value="Repair">Repair</option>
+                    <option>Chain</option>
+                    <option>Brake</option>
+                    <option>Rope</option>
+                </select>
+                </div>
+                <h3 id = "message"></h3>
+                <button type="button" id = "apply">APPLY</button>
+
+            </form>
+        </section>
+    <script src = "static/request/index.js"></script>
+    </body>
+</html>

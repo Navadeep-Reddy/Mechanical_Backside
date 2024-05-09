@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Welcome to SK Mechanics
+        </title>
+        <link rel = "stylesheet" href="static/login/style.css">
+    </head>
+    <body>
+        <form action="/" class = "wrapper" method="post">
+            <h1>Login</h1>
+
+            <div class="input-box">
+                <input type = "text" placeholder="Username" id = "user-el" autofocus name = "Username">
+                <input type = "password" placeholder="Password" id = "pass-el" name = "Password">
+            </div>
+
+            <div>
+                <button type="submit" id = "button-el">SUBMIT</button>
+            </div>
+
+            <div class = "remember-forgot">
+                <label>
+                    <input type="checkbox">
+                    Remember me?
+                </label>
+                <a href = "https://www.bing.com/ck/a?!&&p=733befbd609f7bc6JmltdHM9MTcxNDA4OTYwMCZpZ3VpZD0yOTUzZDYzOC1lMzU2LTY1NjgtMzZhYi1jMjU1ZTJmMDY0YjgmaW5zaWQ9NTQ5OQ&ptn=3&ver=2&hsh=3&fclid=2953d638-e356-6568-36ab-c255e2f064b8&psq=github&u=a1aHR0cHM6Ly9naXRodWIuY29tLw&ntb=1">Forgot Password?</a>
+            </div>
+            <div class = "message">
+                <p>{{message}}</p>
+            </div>
+        </form>
+    </body>
+</html>

@@ -1,0 +1,190 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{
+    font-family: Poppins, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: rgb( 10, 10, 10);
+
+}
+
+body{
+    background: whitesmoke;
+    margin-top: 70px;
+    height: 100vh;
+}
+
+.header{
+    position: fixed;
+    background: transparent;
+    width: 100%;
+    height: 70px;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    border-bottom: 1px solid transparent;
+}
+
+.logo{
+    background: transparent;
+    width: 300px;
+    font-size: 25px;
+    text-decoration: none;
+    font-weight: 600;
+    padding-left: 30px;
+
+}
+
+.logo:hover{
+    color: #3e3ec4;
+}
+
+.navbar{
+    padding: 20px;
+    display: inline-flex;
+    background: transparent;
+    height: 100%;
+    width: 300px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar a{
+    text-decoration: none;
+}
+
+.navbar a:hover,
+.navbar a.active
+{
+    color:#3e3ec4;
+}
+
+.icons{
+    background: transparent;
+    width: 300px;
+    font-size: 26px;
+    padding-left: 230px;
+
+}
+
+.icons a{
+    display: inline-block;
+    color: whitesmoke;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    transform: rotate(45deg);
+    border: 1px solid transparent;
+}
+
+.icons a:hover{
+    border: 1px solid white;
+}
+
+.icons a i{
+    transform: rotate(-45deg);
+    color: whitesmoke;
+}
+
+.home{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    background: transparent;
+    justify-content: space-around;
+    align-items: center;
+
+}
+
+body .home-content{
+    background: transparent;
+    width: 820px;
+    height: 520px;
+    padding: 10px 10px 10px 10px;   
+    margin-top: -100px;
+}
+
+.home-content h1{
+    font-size: 50px;
+
+}
+
+.home-content h3{
+    color: #3e3ec4;
+    font-size: 25px;
+
+}
+
+.home-content p{
+    font-size: 16px;
+    margin: 20px 0 30px;
+    font-weight: 405;
+}
+
+
+button.request{
+    margin: 0;
+    width: 200px;
+    padding: 10px;
+    font-weight: 600;
+    background: #3e3ec4;
+    border: 2px solid #3e3ec4;
+    border-radius: 40px;
+    color: white;
+    transition: 0.2s;
+}
+
+button.request:hover{
+    background: white;
+    color: #3e3ec4;
+    border: 2px solid black;
+
+}
+
+button.request:active{
+    background: black;
+}
+
+.Image{
+    position: relative;
+    background: transparent;
+    width: 500px;
+    height: 500px;
+    margin-top: -250px;
+    margin-right: -150px;
+}
+
+.rhombus{
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    height: 80%;
+    width: 80%;
+    border: solid 20px #3e3ec4;
+    transform: rotate(45deg);
+    background: whitesmoke;
+    box-shadow: -15px 15px 15px rgba(0, 0, 0, 0.596);
+}
+
+.rhombus img{
+    display: block;
+    position: fixed;
+    transform: rotate(-45deg);
+    max-width: 600px;
+}
+
+.rhombus2{
+    position: absolute;
+    background: #3e3ec4;
+    width: 700px;
+    height: 700px;
+    z-index: -1;
+    transform: rotate(45deg);
+    top: -70%;
+    right: -50%;
+}
+
