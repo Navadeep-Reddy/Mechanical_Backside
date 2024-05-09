@@ -9,10 +9,6 @@
 
 }
 
-span{
-    color: #3e3ec4;
-}
-
 body{
     background: whitesmoke;
     margin-top: 70px;
@@ -40,6 +36,7 @@ body{
     text-decoration: none;
     font-weight: 600;
     padding-left: 30px;
+    animation: rightSlide 0.5s ease-in;
 
 }
 
@@ -55,6 +52,7 @@ body{
     width: 300px;
     justify-content: space-between;
     align-items: center;
+    animation: slideUp 0.5s ease-in;
 }
 
 .navbar a{
@@ -115,6 +113,7 @@ body{
 .home-content h1{
     font-size: 50px;
     color:#3e3ec4;
+    animation: slideDown 0.5s ease-in;
 }
 
 .home-content span{
@@ -125,6 +124,7 @@ body{
     margin: 12px 0;
     font-size: 16px;
     font-weight: 405;
+    animation: slideUp 0.5s ease-in;
 }
 
 .Image{
@@ -154,5 +154,78 @@ body{
     display: inline-block;
     max-width: 350px;
     transform: rotate(-45deg);
+    animation: Big 0.5s ease-in;
     
+}
+
+@keyframes slideDown{
+    0%{
+        transform: translateY(-30px);
+        opacity: 0.5;
+    }
+
+    100%{
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp{
+    0%{
+        transform: translateY(40px);
+        opacity: 0;
+    }
+
+    100%{
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes rightSlide{
+    0%{
+        transform: translateX(-100px);
+        opacity: 0;
+    }
+
+    100%{
+        transform: translateX(0px);
+        opacity: 1;
+    }
+}
+
+
+@keyframes Appear{
+    0%{
+        opacity: 0;
+    }
+
+    100%{
+        opacity: 1;
+    }
+}
+
+@keyframes Bike{
+    0%{
+        transform: translate(200px, -200px) rotate(-45deg);
+        opacity: 0;
+    }
+
+    100%{
+        transform: translateX(0px) rotate(-45deg);
+        opacity: 1;
+    }
+}
+
+
+@keyframes Big{
+    0%{
+        transform:rotate(-45deg) scale(70%);
+        opacity: 0.5;
+    }
+
+    100%{
+        transform:rotate(-45deg) scale(100%);
+        opacity: 1;
+    }
 }
