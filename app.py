@@ -6,6 +6,9 @@ userpass = {"Navadeep": "Water", "Anakin": "Sand", "TamilBharathi": "123"}
 #Default value of username for displaying 
 about_name = "There"
 
+#Counter variable for " / " Get requests
+get_count = 0
+
 app = Flask(__name__)
 
 
@@ -13,8 +16,14 @@ app = Flask(__name__)
 @app.route('/', methods=["POST", "GET"])
 def index():
     global about_name
-    if request.method == "GET":
-        return render_template("index.html", message="")
+    global get_count   
+
+    if request.method == "GET": 
+        if (get_count == 0):
+            get_count += 1
+            return render_template("index.html", message="")
+        else:
+            return render_template("land.html")
     
     if request.method == "POST":
         username = request.form.get("Username", None).strip()
