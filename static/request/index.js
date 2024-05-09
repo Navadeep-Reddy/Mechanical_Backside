@@ -10,7 +10,5 @@ function display()
 
 repair.addEventListener("change", display);
 vType.addEventListener("change", display);
-apply.addEventListener("click", function(){
-    message.textContent = "Your Order Has Been Noted";
-});
+
 

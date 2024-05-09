@@ -19,7 +19,7 @@
             </div>
         </header>
         <section class = "home">
-            <form class = "request">
+            <form class = "request" method = "post" action ="{{url_for('make_request')}}">
                 <h1>Select Service</h1>
                 <div class ="dropDown">
                 <select name = "vtype" id = "vtype">
@@ -35,8 +35,8 @@
                     <option>Rope</option>
                 </select>
                 </div>
-                <h3 id = "message"></h3>
-                <button type="button" id = "apply">APPLY</button>
+                <h3 id = "message">{{confirm}}</h3>
+                <button type="submit" id = "apply">APPLY</button>
 
             </form>
         </section>
