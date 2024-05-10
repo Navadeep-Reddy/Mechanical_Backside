@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Welcome to SK Mechanics
+        </title>
+        <link rel = "stylesheet" href="static/new_user/style.css">
+    </head>
+    <body>
+        <form class = "wrapper" method = "post" action = "{{url_for('create_account')}}">
+            <h1>New Account</h1>
+
+            <div class="input-box">
+                <input type = "text" placeholder="Username" id = "user-el" name = "user">
+                <input type = "password" placeholder="New Password" id = "pass-el" name = "password">
+                <input type = "password" placeholder="Re-enter Password" id = "repass-el">
+            </div>
+
+            <div>
+                <button type="submit" id = "button-el">Register</button>
+            </div>
+            <p id = "warning"></p>
+        </form>
+    <script src = "static/new_user/index.js"></script>
+    </body>
+</html>
