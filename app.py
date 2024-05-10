@@ -3,9 +3,9 @@ from flask import Flask, render_template, request
 
 #importing functions from another file
 from write import users_log, orders_log
-
+from read_prog import UserDetails
 #Dictionary that stores the usernames and passwords
-userpass = {"Navadeep": "Water", "Anakin": "Sand", "TamilBharathi": "123"}
+userpass=UserDetails()
 
 #Default value of username for displaying 
 about_name = "There"
