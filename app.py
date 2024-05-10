@@ -6,6 +6,7 @@ from write import users_log, orders_log
 
 #Dictionary that stores the usernames and passwords
 userpass = {"Navadeep": "Water", "Anakin": "Sand", "TamilBharathi": "123"}
+print(userpass)
 
 #Default value of username for displaying 
 about_name = "There"
