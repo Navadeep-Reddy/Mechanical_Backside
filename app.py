@@ -2,7 +2,7 @@
 from flask import Flask, render_template, request
 
 #importing functions from another file
-from write import users_log, orders_log
+from write import new_user_log, orders_log
 from read_prog import UserDetails
 #Dictionary that stores the usernames and passwords
 userpass=UserDetails()
@@ -23,7 +23,7 @@ def index():
     global index_get_count   
 
     #rendering login page when It is the first get request to "/" route and rendering landing page if it's more than one
-    if request.method == "GET": 
+    if request.method == "GET":
         if (index_get_count == 0):
             index_get_count += 1
             return render_template("index.html", message="")
@@ -32,6 +32,7 @@ def index():
     
     #If its a post request, we get the data from the route and render landing page if correct else render login again with message
     if request.method == "POST":
+        
         #get username and password from the route
         username = request.form.get("Username", None).strip()
         password = request.form.get("Password", None)
@@ -48,8 +49,38 @@ def index():
         else:
             return render_template("index.html", message="User does not exist!")
 
+
+        
+#creating new route for account creation
+@app.route("/create_account", methods = ["POST", "GET"])
+def create_account():
+    global userpass
+
+    if request.method == "GET":
+        return render_template("new_account.html")
+    
+    elif request.method == "POST":
+        #getting values of new account
+        new_username = request.form.get("user", "Error")
+        new_password = request.form.get("password", "No")
+
+        #writing new values into file
+        new_user_log(new_username, new_password)
+
+
+        #setting get count to zero so that "/" redirects to login page
+        global index_get_count
+        index_get_count = 0
+
+        #updating dictionary after new account
+        userpass=UserDetails()
+        return render_template('index.html', message = "New Account Created")
+
+
+
+
 #Created a new route for the about page
-@app.route('/about')
+@app.route('/about', methods = ["POST", "GET"])
 def about():
     return render_template("about.html", user = about_name)
 
