@@ -67,11 +67,6 @@ def create_account():
         #writing new values into file
         new_user_log(new_username, new_password)
 
-
-        #setting get count to zero so that "/" redirects to login page
-        global index_get_count
-        index_get_count = 0
-
         #updating dictionary after new account
         userpass=UserDetails()
         return render_template('index.html', message = "New Account Created")
