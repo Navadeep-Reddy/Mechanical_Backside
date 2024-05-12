@@ -1,5 +1,5 @@
 import csv
-from jobcard import JobCard
+from Functions.jobcard import JobCard
 def UserDetails():
     d={}
     f=open("Data/user_log.txt","r")

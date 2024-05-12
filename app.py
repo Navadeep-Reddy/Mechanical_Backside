@@ -2,8 +2,8 @@
 from flask import Flask, render_template, request
 
 #importing functions from another file
-from write import new_user_log, orders_log
-from read_prog import UserDetails,alljobcards
+from Functions.write import new_user_log, orders_log
+from Functions.read_prog import UserDetails,alljobcards
 
 #Dictionary that stores the usernames and passwords
 userpass=UserDetails()
