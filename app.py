@@ -2,13 +2,16 @@
 from flask import Flask, render_template, request
 
 #importing functions from another file
-from write import new_user_log, orders_log
-from read_prog import UserDetails
+from Functions.write import new_user_log, orders_log
+from Functions.read_prog import UserDetails,alljobcards
+
 #Dictionary that stores the usernames and passwords
 userpass=UserDetails()
 
 #Default value of username for displaying 
 about_name = "There"
+vehicle_type="Vehicle"
+repair_type="Repair"
 
 #Counter variable for " / " Get requests for index
 index_get_count = 0
@@ -20,6 +23,8 @@ app = Flask(__name__)
 @app.route('/', methods=["POST", "GET"])
 def index():
     global about_name
+    global vehicle_type
+    global repair_type
     global index_get_count   
 
     #rendering login page when It is the first get request to "/" route and rendering landing page if it's more than one
@@ -93,8 +98,17 @@ def make_request():
         vehicle_type = request.form.get("vtype", "Did not work")
         repair_type = request.form.get("repair", "Not working")
 
-        #Pass It into the imported function to write It into a file
-        orders_log(about_name ,vehicle_type, repair_type)
+        #Writing info of order into csv
+        orders_log(about_name, vehicle_type, repair_type)
+
+       
+        
+            
 
         #Render the same page with the updated message
         return render_template("request.html", confirm = "Your Order Has Been Noted")
+
+
+
+jobcards=alljobcards()
+print(jobcards)
