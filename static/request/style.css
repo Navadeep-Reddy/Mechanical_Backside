@@ -138,15 +138,79 @@ body{
     flex-direction: column;
 }
 
+.request .number-input{
+    animation: slideDown 0.5s ease-in;
+}
+
+.number-input input{
+    margin: 15px 10px;
+    margin-top: 0;
+    width: 15%;
+    padding: 5px;
+    border-radius: 10px;
+    text-align: center;
+    transition: 0.5s;
+    border: solid 2px black;
+}
+
+.number-input input:focus{
+    width: 30%;
+}
+
 .request button{
     padding: 0 15px;
     width: 15%;;
     height: 7%;
-    margin: 30px;
+    margin-top: 10px;
     color: whitesmoke;
     background: black;
-    border-radius: 40px;
+    border: 2px solid black;
+    border-radius: 10px;
     font-weight: 600;
+    transition: 0.3s;
+}
+
+.request button:hover{
+    background: white;
+    color: #3e3ec4;
+}
+
+.request button:active{
+    background: black;
+}
+
+
+.request .date{
+    animation: slideDown 0.5s ease-in;
+    margin: 10px 0 15px 0;
+}
+
+.request .date input{
+    border-radius: 10px;
+    border: 2px solid black;
+    padding: 3px;
+    font-family: sans-serif;
+}
+
+.request .boxy{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+#emergency{
+    margin: 0 5px;
+}
+
+
+.request .boxy p,
+.request #emergency
+{
+    accent-color: #3e3ec4;
+    animation: slideDown 0.5s ease-in;
+
 }
 
 .dropDown, #apply, h3{
