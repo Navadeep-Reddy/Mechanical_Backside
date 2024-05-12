@@ -98,6 +98,7 @@ def make_request():
         vehicle_type = request.form.get("vtype", "Did not work")
         repair_type = request.form.get("repair", "Not working")
 
+        #Writing info of order into csv
         orders_log(about_name, vehicle_type, repair_type)
 
        
