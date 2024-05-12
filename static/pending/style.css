@@ -1,0 +1,307 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{
+    font-family: Poppins, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: rgb( 10, 10, 10);
+
+}
+
+body{
+    background: whitesmoke;
+    margin-top: 70px;
+    height: 100vh;
+}
+
+.header{
+    position: fixed;
+    background: transparent;
+    width: 100%;
+    height: 70px;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    border-bottom: 1px solid transparent;
+}
+
+.logo{
+    background: transparent;
+    width: 300px;
+    font-size: 25px;
+    text-decoration: none;
+    font-weight: 600;
+    padding-left: 30px;
+    animation: rightSlide 0.5s ease-in;
+
+}
+
+.logo:hover{
+    color: #3e3ec4;
+}
+
+.navbar{
+    padding: 20px;
+    display: inline-flex;
+    background: transparent;
+    height: 100%;
+    width: 300px;
+    justify-content: space-between;
+    align-items: center;
+    animation: slideUp 0.5s ease-in;
+}
+
+.navbar a{
+    text-decoration: none;
+}
+
+.navbar a:hover,
+.navbar a.active
+{
+    color:#3e3ec4;
+}
+
+.icons{
+    background: transparent;
+    width: 300px;
+    font-size: 26px;
+    padding-left: 230px;
+
+}
+
+.icons a{
+    display: inline-block;
+    color: whitesmoke;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    transform: rotate(45deg);
+    border: 1px solid transparent;
+}
+
+.icons a:hover{
+    border: 1px solid white;
+}
+
+.icons a i{
+    transform: rotate(-45deg);
+    color: whitesmoke;
+}
+
+.content{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -70px;
+}
+
+.order{
+    width: 70%;
+    height: 70%;;
+    background: transparent;
+    margin-top: -70px;
+}
+
+.name-od{
+    width: 100%;
+    height: 30%;
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: slideDown 0.7s ease-in;
+}
+
+.order h1{
+    font-size: 60px;
+    color: black;
+    text-align: center;
+    height: 25%;
+}
+
+.types{
+    background: transparent;
+    width: 100%;
+    height: 25%;
+    display: flex;
+    flex-direction: row;
+}
+
+.vehicle-type{
+    background: transparent;
+    width: 50%;
+    animation: rightSlide 0.5s ease-in;
+    animation-delay: 0.2s;
+    animation-fill-mode: both;
+}
+
+h2{
+    font-size: 40px;
+    color: #3e3ec4;
+}
+
+.repair-type{
+    background: transparent;
+    width: 50%;
+    display: flex;
+    justify-content: right;
+    animation: leftSlide 0.5s ease-in;
+    animation-delay: 0.2s;
+    animation-fill-mode: both;
+}
+
+.container{
+    width: 70%;
+    height: 100%;
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.container1{
+    width: 70%;
+    height: 100%;
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.numbers{
+    background: transparent;
+    width: 100%;
+    height: 25%;
+    display: flex;
+    flex-direction: row;
+}
+
+.eng-no{
+    background: transparent;
+    width: 50%;
+    display: flex;
+    justify-content: right;
+    animation: rightSlide 0.5s ease-in;
+}
+
+h2{
+    font-size: 40px;
+}
+
+.reg-no{
+    background: transparent;
+    width: 50%;
+    display: flex;
+    justify-content: left;
+    animation: leftSlide 0.5s ease-in;
+}
+
+.container3{
+    width: 70%;
+    height: 100%;
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.container4{
+    width: 70%;
+    height: 100%;
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.date {
+    background: transparent;
+    width: 100%;
+    height: 20%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: slideUp 0.4s ease-in;
+}
+
+
+.date .container5{
+    background: transparent;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.detail{
+    font-weight: 405;
+    font-size: 18px;
+}
+
+
+
+
+@keyframes slideDown{
+    0%{
+        transform: translateY(-40px);
+        opacity: 0.3;
+    }
+
+    100%{
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp{
+    0%{
+        transform: translateY(40px);
+        opacity: 0.3;
+    }
+
+
+    100%{
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes rightSlide{
+    0%{
+        transform: translateX(-100px);
+        opacity: 0.5;
+    }
+
+    100%{
+        transform: translateX(0px);
+        opacity: 1;
+    }
+}
+
+@keyframes leftSlide{
+    0%{
+        transform: translateX(100px);
+        opacity: 0.5;
+    }
+
+    100%{
+        transform: translateX(0px);
+        opacity: 1;
+    }
+}
+
+

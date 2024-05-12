@@ -115,5 +115,26 @@ def make_request():
         return render_template("request.html", confirm = "Your Order Has Been Noted")
 
 
+@app.route("/pending")
+def pending():
+    #Get class objects of all current jobcards into a list
+    jobcards=alljobcards()
 
-jobcards=alljobcards()
+    #new list for storing jobcard objects of the current user
+    user_jobs = []
+
+    for card in jobcards:
+        if card.username == about_name:
+            user_jobs.append(card)
+
+    if (len(user_jobs) == 0):
+
+        return render_template('pending.html', name = about_name, Vehicle_Type = "NIL", Repair_Type ="NIL", Engine_No ="NIL", Registration_No ="NIL", Est_Date = "NIL")
+    
+    else:
+        #Get the earliest submitted request
+        First_Job = user_jobs[0]
+        return render_template('pending.html', name = about_name, Vehicle_Type = First_Job.vehicle, Repair_Type = First_Job.repair, Engine_No =First_Job.engine_no, Registration_No =First_Job.reg_no, Est_Date = First_Job.delivery_date)
+
+
+

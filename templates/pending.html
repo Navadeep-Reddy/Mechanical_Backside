@@ -1,0 +1,70 @@
+<html>
+    <head>
+        <title>
+            About
+        </title>
+        <link rel = "stylesheet" href="static/pending/style.css">
+    </head>
+
+    <body>
+        <header class = "header">
+            <a href = "#" class = "logo">SK MECHANICS.</a>
+            <div class = "navbar">
+                <a href = "{{url_for('index')}}" >Home</a>
+                <a href = "{{url_for('about')}}" >About</a>
+                <a href = "#" class = "active">Pending</a>
+            </div>
+            <div class ="icons">
+                <a href = "#"><a href = "#"><i class='bx bxs-phone'></i></a></i></a>
+            </div>
+        </header>
+        <section class = "content">
+            <div class = "order">
+
+                <div class = "name-od">
+                    <h1>{{name}}'s Order</h1>
+                </div>
+
+                <div class = "types">
+                    <div class = "vehicle-type">
+                        <div class = "container">
+                            <h2>Vehicle Type</h2>
+                            <p class = "detail">{{Vehicle_Type}}</p>
+                        </div>
+                    </div>
+
+                    <div class = "repair-type">
+                        <div class = "container1">
+                            <h2>Repair Type</h2>
+                            <p class = "detail">{{Repair_Type}}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class = "numbers">
+                    <div class = "eng-no">
+                        <div class = "container3">
+                            <h2>Engine No</h2>
+                            <p class = "detail">{{Engine_No}}</p>
+                        </div>
+                    </div>
+
+                    <div class = "reg-no">
+                        <div class = "container4">
+                            <h2>Registration No</h2>
+                            <p class = "detail">{{Registration_No}}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class = "date">
+                    <div class = "container5">
+                        <h3>Estimated Date</h3>
+                        <p>{{Est_Date}}</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </body>
+</html>
