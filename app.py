@@ -95,11 +95,17 @@ def make_request():
     if request.method == "POST":
 
         #Store the vehicle_type and repair_type in variables
-        vehicle_type = request.form.get("vtype", "Did not work")
-        repair_type = request.form.get("repair", "Not working")
+        vehicle_type = request.form.get("vtype", "Empty")
+        repair_type = request.form.get("repair", "Empty")
+        engine_no = request.form.get("eng_no", "Empty")
+        reg_no = request.form.get("reg_no", "Empty")
+        delivery_date = request.form.get("date", "Empty")
+
+        #setting default value of button to be off as on is the value we get when selected 
+        emergency_state = request.form.get("emergency", "off")
 
         #Writing info of order into csv
-        orders_log(about_name, vehicle_type, repair_type)
+        orders_log(about_name, vehicle_type, repair_type, engine_no, reg_no, delivery_date, emergency_state)
 
        
         
@@ -111,4 +117,3 @@ def make_request():
 
 
 jobcards=alljobcards()
-print(jobcards)

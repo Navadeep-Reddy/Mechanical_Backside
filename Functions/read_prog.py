@@ -20,8 +20,8 @@ def alljobcards():
     with open("Data/" + file_name, "r", newline="") as file:
         reader = csv.reader(file)
         for row in reader:
-            username, vehicle, repair = row
-            jobcard_object = JobCard(username, vehicle, repair)
+            username, vehicle, repair,  engine_no, reg_no, delivery_date = row
+            jobcard_object = JobCard(username, vehicle, repair,  engine_no, reg_no, delivery_date)
             jobcards_objects.append(jobcard_object)
 
     return jobcards_objects
