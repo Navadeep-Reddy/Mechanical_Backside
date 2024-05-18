@@ -1,17 +1,23 @@
-# Functions/read_prog.py
-import csv
+# Functions/priority.py
 from Functions.jobcard import JobCard
-from Functions.priority import PriorityQueue
+import csv
+from datetime import datetime
 
-def UserDetails():
-    d = {}
-    f = open("Data/user_log.txt", "r")
-    text = f.readlines()
-    
-    for word in text:
-        word = word.split()
-        d[word[0]] = word[1]
-    return d    
+class PriorityQueue:
+    def __init__(self, jobcards):
+        self.jobcards = jobcards
+
+    def sort_jobcards(self):
+        self.jobcards.sort(key=self.priority_key)
+        return self.jobcards
+
+    @staticmethod
+    def priority_key(jobcard):
+        # Convert delivery date string to a datetime object
+        delivery_date = datetime.strptime(jobcard.delivery_date, "%Y-%m-%d")
+        # Emergency jobs are given the highest priority
+        emergency_priority = 0 if jobcard.emergency_state == "on" else 1
+        return (emergency_priority, delivery_date)
 
 def alljobcards():
     file_name = "jobcards.csv"
