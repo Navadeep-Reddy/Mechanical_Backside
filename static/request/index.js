@@ -2,16 +2,15 @@ const vType = document.querySelector("#vtype");
 const repair = document.querySelector("#repair");
 const message = document.querySelector("#message");
 const apply = document.querySelector("#apply");
-const section = document.querySelector(".home") 
+const section = document.querySelector(".home");
 
 function display() {
     rec_box();
     if (vType.value !== "Vehicle" && repair.value !== "Repair") {
         message.textContent = "You have selected " + vType.value + " and " + repair.value;
- 
-    }
-    else {
-        message.textContent = "";   
+        getRelatedRepairs(vType.value, repair.value);
+    } else {
+        message.textContent = "";
     }
 }
 
@@ -21,12 +20,11 @@ function addOption(text) {
     repair.add(option);
 }
 
-function rec_box() {
+function rec_box(relatedRepairs = []) {
     var existingRecboxDiv = document.querySelector(".recbox");
     if (existingRecboxDiv) {
         section.removeChild(existingRecboxDiv);
     }
-
 
     const recboxDiv = document.createElement("div");
     recboxDiv.classList.add("recbox");
@@ -39,24 +37,18 @@ function rec_box() {
 
     const ulElement = document.createElement("ul");
 
-    const listItem1 = document.createElement("li");
-    listItem1.textContent = "Related 1";
-    ulElement.appendChild(listItem1);
-
-    const listItem2 = document.createElement("li");
-    listItem2.textContent = "Related 2";
-    ulElement.appendChild(listItem2);
+    relatedRepairs.forEach(repair => {
+        const listItem = document.createElement("li");
+        listItem.textContent = repair;
+        ulElement.appendChild(listItem);
+    });
 
     const labelElement = document.createElement("label");
-    const para = document.createElement("p");
-    para.textContent = "Add: ";
-
-
+    labelElement.textContent = "Add: ";
 
     const checkboxInput = document.createElement("input");
     checkboxInput.setAttribute("type", "checkbox");
     checkboxInput.classList.add("Recom");
-    labelElement.appendChild(para);
     labelElement.appendChild(checkboxInput);
 
     section.appendChild(recboxDiv);
@@ -66,6 +58,23 @@ function rec_box() {
     recboxDiv.appendChild(labelElement);
 }
 
+function getRelatedRepairs(vehicleType, repairType) {
+    fetch('/get_related_repairs', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            vehicle_type: vehicleType,
+            repair_type: repairType
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        rec_box(data);
+    })
+    .catch(error => console.error('Error:', error));
+}
 
 repair.addEventListener("change", display);
 
@@ -103,4 +112,3 @@ vType.addEventListener("change", function () {
             break;
     }
 });
-

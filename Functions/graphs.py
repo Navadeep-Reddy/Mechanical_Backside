@@ -30,10 +30,10 @@ def bike_graph():
     repair_graph.add_repair("Tire Repair", ["Frame", "Suspension"])
     repair_graph.add_repair("Gear Adjustment", ["Lubrication"])
     repair_graph.add_repair("Brake Checkup", ["Tire Repair"])
-    repair_graph.add_repair("Chain Maintenance", ["Drive Train", "Lubrication"])
+    repair_graph.add_repair("Chain Maintenance", ["Drivetrain", "Lubrication"])
     repair_graph.add_repair("Suspension", ["Frame", "Tire Repair", "Wheel Truing"])
-    repair_graph.add_repair("Drive Train", ["Gear Adjustment", "Lubrication"])
-    repair_graph.add_repair("Engine Checkup", ["Gear Adjustment", "Drive Train"])
+    repair_graph.add_repair("Drivetrain", ["Gear Adjustment", "Lubrication"])
+    repair_graph.add_repair("Engine Checkup", ["Gear Adjustment", "Drivetrain"])
 
     return repair_graph
 
@@ -46,7 +46,7 @@ def car_graph():
     repair_graph.add_repair("Tire Checkup", ["Brake Checkup", "Fuel Injector"])
     repair_graph.add_repair("Fuel Injector", ["Engine Maintenance"])
     repair_graph.add_repair("Transmission", ["Engine Maintenance", "Fuel Injector", "Drivetrain"])
-    repair_graph.add_repair("Drive Train", ["Engine Maintenance", "Transmission"])
+    repair_graph.add_repair("Drivetrain", ["Engine Maintenance", "Transmission"])
 
     return repair_graph
 

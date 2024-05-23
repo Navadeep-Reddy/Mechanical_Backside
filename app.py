@@ -1,5 +1,5 @@
 #Importing functions needed for webpage
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 
 #importing functions from another file
 from Functions.write import new_user_log, orders_log
@@ -120,12 +120,28 @@ def make_request():
         #Writing info of order into csv
         orders_log(about_name, vehicle_type, repair_type, engine_no, reg_no, delivery_date, emergency_state)
 
-       
-        
-            
-
         #Render the same page with the updated message
         return render_template("request.html", confirm = "Your Order Has Been Noted")
+
+#Ajax to get the related repairs
+@app.route('/get_related_repairs', methods=['POST'])
+def get_related_repairs():
+    data = request.get_json()
+    repair_type = data.get('repair_type')
+    vehicle_type = data.get('vehicle_type')
+    
+    # Initialize the variable to store the next related repairs
+    next_repairs = []
+
+    if vehicle_type == "Car":
+        next_repairs = car_repairs.next_related_repair(repair_type)
+    elif vehicle_type == "Motorcycle":
+        next_repairs = bike_repairs.next_related_repair(repair_type)
+    elif vehicle_type == "Bicycle":
+        next_repairs = cycle_repairs.next_related_repair(repair_type)
+    
+    # Return the related repairs as a JSON response
+    return jsonify(next_repairs)
 
 
 @app.route("/pending")

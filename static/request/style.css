@@ -122,12 +122,12 @@ body{
     list-style-position: inside;
     font-size: 18px;
     font-weight: 405;
-    animation: slideDown 0.5s ease-in;
+
     margin: 10px;
 }
 
 .recbox p, .recbox input{
-    animation: slideDown 0.5s ease-in;
+
 }
 
 
