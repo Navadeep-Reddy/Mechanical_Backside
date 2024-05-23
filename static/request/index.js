@@ -16,43 +16,26 @@ vType.addEventListener("change", function(){
 
     if (vType.value === "Motorcycle") {
         var newOption = document.createElement("option");
-        newOption.text = "Faulty Chain Sprocket";
+        newOption.text = "Tire Repair";
 
         var newOption1 = document.createElement("option");
-        newOption1.text = "Engine Oil Replacement";
+        newOption1.text = "Gear Adjustment";
 
         var newOption2 = document.createElement("option");
-        newOption2.text = "Puncture";
+        newOption2.text = "Brake Checkup";
 
         var newOption3 = document.createElement("option");
-        newOption3.text = "Tire Alignment";
-
-
-        repair.add(newOption);
-        repair.add(newOption1);
-        repair.add(newOption2);
-        repair.add(newOption3);
-        repair.add(newOption4);
-    }
-
-    else if (vType.value === "Bicycle") {
-        var newOption = document.createElement("option");
-        newOption.text = "Chain adjustment";
-
-        var newOption1 = document.createElement("option");
-        newOption1.text = "Brake Disc Replacement";
-
-        var newOption2 = document.createElement("option");
-        newOption2.text = "Puncture";
-
-        var newOption3 = document.createElement("option");
-        newOption3.text = "Tire Alignment";
+        newOption3.text = "Chain Maintenance";
 
         var newOption4 = document.createElement("option");
-        newOption4.text = "Horn Replacement";
+        newOption4.text = "Suspension";
 
         var newOption5 = document.createElement("option");
-        newOption5.text = "Seat Tightening";
+        newOption5.text = "Drivetrain";
+
+        var newOption6 = document.createElement("option");
+        newOption6.text = "Engine Checkup";
+
 
         repair.add(newOption);
         repair.add(newOption1);
@@ -60,26 +43,48 @@ vType.addEventListener("change", function(){
         repair.add(newOption3);
         repair.add(newOption4);
         repair.add(newOption5);
+        repair.add(newOption6);
+    }
+
+
+    else if (vType.value === "Bicycle") {
+        var newOption = document.createElement("option");
+        newOption.text = "Tire Puncture";
+
+        var newOption1 = document.createElement("option");
+        newOption1.text = "Brake Adjustment";
+
+        var newOption2 = document.createElement("option");
+        newOption2.text = "Frame";
+
+        var newOption3 = document.createElement("option");
+        newOption3.text = "Suspension";
+
+        repair.add(newOption);
+        repair.add(newOption1);
+        repair.add(newOption2);
+        repair.add(newOption3);
+
     }
 
     else if(vType.value === "Car"){
         var newOption = document.createElement("option");
-        newOption.text = "Engine Maintenance";
+        newOption.text = "Brake Checkup";
 
         var newOption1 = document.createElement("option");
-        newOption1.text = "Battery Checkup";
+        newOption1.text = "Suspension";
 
         var newOption2 = document.createElement("option");
         newOption2.text = "Tire Checkup";
 
         var newOption3 = document.createElement("option");
-        newOption3.text = "Brackets";
+        newOption3.text = "Fuel Injector";
 
         var newOption4 = document.createElement("option");
-        newOption4.text = "Detailing";
+        newOption4.text = "Transmission";
 
         var newOption5 = document.createElement("option");
-        newOption5.text = "Coolant Refill";
+        newOption5.text = "Drivetrain";
 
         repair.add(newOption);
         repair.add(newOption1);
