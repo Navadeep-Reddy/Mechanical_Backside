@@ -110,6 +110,13 @@ def make_request():
         #setting default value of button to be off as on is the value we get when selected 
         emergency_state = request.form.get("emergency", "off")
 
+        #List to store the related repais
+        next_repairs = []
+
+        if vehicle_type == "Car":
+            next_repairs.extend(car_repairs.next_related_repair(repair_type))
+        print(next_repairs)
+
         #Writing info of order into csv
         orders_log(about_name, vehicle_type, repair_type, engine_no, reg_no, delivery_date, emergency_state)
 

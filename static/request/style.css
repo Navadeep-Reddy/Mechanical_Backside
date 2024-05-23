@@ -6,6 +6,7 @@
     padding: 0;
     box-sizing: border-box;
     color: rgb( 10, 10, 10);
+  
 
 }
 
@@ -100,6 +101,38 @@ body{
     justify-content: center;
 
 }
+
+.recbox{
+    margin-top: 15vh;
+    border-radius: 40px;
+    width: 700px;
+    height: 600px;
+    text-align: center;
+    accent-color: #3e3ec4;
+
+}
+
+.recbox h3{
+    font-size: 30px;
+    color: #2f2f8d;
+    animation: slideUp 0.5s ease-in;
+}
+
+.recbox ul li {
+    list-style-position: inside;
+    font-size: 18px;
+    font-weight: 405;
+    animation: slideDown 0.5s ease-in;
+    margin: 10px;
+}
+
+.recbox p, .recbox input{
+    animation: slideDown 0.5s ease-in;
+}
+
+
+
+
 
 .request{
     margin-top: 10vh;
