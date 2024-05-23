@@ -4,9 +4,15 @@ from flask import Flask, render_template, request
 #importing functions from another file
 from Functions.write import new_user_log, orders_log
 from Functions.read_prog import UserDetails,alljobcards
+from Functions.graphs import bike_graph,  car_graph, cycle_graph 
 
 #Dictionary that stores the usernames and passwords
 userpass=UserDetails()
+
+#Generate graphs for each vehicle type and its repairs
+bike_repairs = bike_graph()
+car_repairs = car_graph()
+cycle_repairs = cycle_graph()
 
 #Default value of username for displaying 
 about_name = "There"
