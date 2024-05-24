@@ -2,95 +2,127 @@ const vType = document.querySelector("#vtype");
 const repair = document.querySelector("#repair");
 const message = document.querySelector("#message");
 const apply = document.querySelector("#apply");
+const section = document.querySelector(".home");
+let new_repairs = [];
 
-function display()
-{
-    if (vType.value != "Vehicle" && repair.value!= "Repair") message.textContent = "You have selected " + vType.value + " and " + repair.value;
-};
+function display() {
+    if (vType.value !== "Vehicle" && repair.value !== "Repair") {
+        message.textContent = "You have selected " + vType.value + " and " + repair.value;
+        getRelatedRepairs(vType.value, repair.value);
+    } else {
+        message.textContent = "";
+    }
+}
+
+function addOption(text) {
+    const option = document.createElement("option");
+    option.text = text;
+    option.value = text;
+    repair.add(option);
+}
+
+function rec_box(relatedRepairs = []) {
+    // Remove existing recbox if it exists
+    let existingRecboxDiv = document.querySelector(".recbox");
+    if (existingRecboxDiv) {
+        section.removeChild(existingRecboxDiv);
+    }
+
+    // Create new recbox
+    const recboxDiv = document.createElement("div");
+    recboxDiv.classList.add("recbox");
+
+    const headingH3 = document.createElement("h3");
+    headingH3.textContent = "Additional Recommended Services";
+
+    const ulElement = document.createElement("ul");
+
+    relatedRepairs.forEach(repair => {
+        const listItem = document.createElement("li");
+        listItem.textContent = repair;
+        ulElement.appendChild(listItem);
+    });
+
+    const labelElement = document.createElement("label");
+    labelElement.textContent = "Add: ";
+
+    const checkboxInput = document.createElement("input");
+    checkboxInput.setAttribute("type", "checkbox");
+    checkboxInput.classList.add("Recom");
+    labelElement.appendChild(checkboxInput);
+
+    recboxDiv.appendChild(headingH3);
+    recboxDiv.appendChild(ulElement);
+    recboxDiv.appendChild(labelElement);
+
+    section.appendChild(recboxDiv);
+
+    // Add event listener for checkbox input after it is added to the DOM
+    checkboxInput.addEventListener("click", function() {
+        let selectedOption = repair.options[repair.selectedIndex];
+        let updatedText = selectedOption.text;
+        new_repairs.forEach(repairItem => {
+            if (!updatedText.includes(repairItem)) {
+                updatedText = updatedText + ", " + repairItem;
+            }
+        });
+        selectedOption.text = updatedText;
+        selectedOption.value = updatedText;
+    });
+}
+
+function getRelatedRepairs(vehicleType, repairType) {
+    fetch('/get_related_repairs', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            vehicle_type: vehicleType,
+            repair_type: repairType
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        new_repairs = data;
+        rec_box(data);
+    })
+    .catch(error => console.error('Error:', error));
+}
 
 repair.addEventListener("change", display);
-vType.addEventListener("change", display);
 
-vType.addEventListener("change", function(){
-    repair.innerHTML = "";
+vType.addEventListener("change", function () {
+    repair.innerHTML = '<option disabled selected value="Repair">Repair</option>';
 
-    if (vType.value === "Motorcycle") {
-        var newOption = document.createElement("option");
-        newOption.text = "Faulty Chain Sprocket";
+    switch (vType.value) {
+        case "Motorcycle":
+            addOption("Tire Repair");
+            addOption("Gear Adjustment");
+            addOption("Brake Checkup");
+            addOption("Chain Maintenance");
+            addOption("Suspension");
+            addOption("Drivetrain");
+            addOption("Engine Checkup");
+            break;
 
-        var newOption1 = document.createElement("option");
-        newOption1.text = "Engine Oil Replacement";
+        case "Bicycle":
+            addOption("Tire Puncture");
+            addOption("Brake Adjustment");
+            addOption("Frame");
+            addOption("Suspension");
+            break;
 
-        var newOption2 = document.createElement("option");
-        newOption2.text = "Puncture";
+        case "Car":
+            addOption("Brake Checkup");
+            addOption("Suspension");
+            addOption("Tire Checkup");
+            addOption("Fuel Injector");
+            addOption("Transmission");
+            addOption("Drivetrain");
+            break;
 
-        var newOption3 = document.createElement("option");
-        newOption3.text = "Tire Alignment";
-
-
-        repair.add(newOption);
-        repair.add(newOption1);
-        repair.add(newOption2);
-        repair.add(newOption3);
-        repair.add(newOption4);
+        default:
+            break;
     }
-
-    else if (vType.value === "Bicycle") {
-        var newOption = document.createElement("option");
-        newOption.text = "Chain adjustment";
-
-        var newOption1 = document.createElement("option");
-        newOption1.text = "Brake Disc Replacement";
-
-        var newOption2 = document.createElement("option");
-        newOption2.text = "Puncture";
-
-        var newOption3 = document.createElement("option");
-        newOption3.text = "Tire Alignment";
-
-        var newOption4 = document.createElement("option");
-        newOption4.text = "Horn Replacement";
-
-        var newOption5 = document.createElement("option");
-        newOption5.text = "Seat Tightening";
-
-        repair.add(newOption);
-        repair.add(newOption1);
-        repair.add(newOption2);
-        repair.add(newOption3);
-        repair.add(newOption4);
-        repair.add(newOption5);
-    }
-
-    else if(vType.value === "Car"){
-        var newOption = document.createElement("option");
-        newOption.text = "Engine Maintenance";
-
-        var newOption1 = document.createElement("option");
-        newOption1.text = "Battery Checkup";
-
-        var newOption2 = document.createElement("option");
-        newOption2.text = "Tire Checkup";
-
-        var newOption3 = document.createElement("option");
-        newOption3.text = "Brackets";
-
-        var newOption4 = document.createElement("option");
-        newOption4.text = "Detailing";
-
-        var newOption5 = document.createElement("option");
-        newOption5.text = "Coolant Refill";
-
-        repair.add(newOption);
-        repair.add(newOption1);
-        repair.add(newOption2);
-        repair.add(newOption3);
-        repair.add(newOption4);
-        repair.add(newOption5);
-
-    }
-
 });
-
-
-

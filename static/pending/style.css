@@ -282,7 +282,7 @@ h2{
 
 @keyframes rightSlide{
     0%{
-        transform: translateX(-100px);
+        transform: translateX(-250px);
         opacity: 0.5;
     }
 
@@ -294,7 +294,7 @@ h2{
 
 @keyframes leftSlide{
     0%{
-        transform: translateX(100px);
+        transform: translateX(250px);
         opacity: 0.5;
     }
 
