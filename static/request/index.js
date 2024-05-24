@@ -3,9 +3,9 @@ const repair = document.querySelector("#repair");
 const message = document.querySelector("#message");
 const apply = document.querySelector("#apply");
 const section = document.querySelector(".home");
+let new_repairs = [];
 
 function display() {
-    rec_box();
     if (vType.value !== "Vehicle" && repair.value !== "Repair") {
         message.textContent = "You have selected " + vType.value + " and " + repair.value;
         getRelatedRepairs(vType.value, repair.value);
@@ -15,25 +15,25 @@ function display() {
 }
 
 function addOption(text) {
-    var option = document.createElement("option");
+    const option = document.createElement("option");
     option.text = text;
+    option.value = text;
     repair.add(option);
 }
 
 function rec_box(relatedRepairs = []) {
-    var existingRecboxDiv = document.querySelector(".recbox");
+    // Remove existing recbox if it exists
+    let existingRecboxDiv = document.querySelector(".recbox");
     if (existingRecboxDiv) {
         section.removeChild(existingRecboxDiv);
     }
 
+    // Create new recbox
     const recboxDiv = document.createElement("div");
     recboxDiv.classList.add("recbox");
 
     const headingH3 = document.createElement("h3");
-    headingH3.textContent = "Additional Recommended";
-
-    const headingH31 = document.createElement("h3");
-    headingH31.textContent = "Services";
+    headingH3.textContent = "Additional Recommended Services";
 
     const ulElement = document.createElement("ul");
 
@@ -51,11 +51,24 @@ function rec_box(relatedRepairs = []) {
     checkboxInput.classList.add("Recom");
     labelElement.appendChild(checkboxInput);
 
-    section.appendChild(recboxDiv);
     recboxDiv.appendChild(headingH3);
-    recboxDiv.appendChild(headingH31);
     recboxDiv.appendChild(ulElement);
     recboxDiv.appendChild(labelElement);
+
+    section.appendChild(recboxDiv);
+
+    // Add event listener for checkbox input after it is added to the DOM
+    checkboxInput.addEventListener("click", function() {
+        let selectedOption = repair.options[repair.selectedIndex];
+        let updatedText = selectedOption.text;
+        new_repairs.forEach(repairItem => {
+            if (!updatedText.includes(repairItem)) {
+                updatedText = updatedText + ", " + repairItem;
+            }
+        });
+        selectedOption.text = updatedText;
+        selectedOption.value = updatedText;
+    });
 }
 
 function getRelatedRepairs(vehicleType, repairType) {
@@ -71,6 +84,7 @@ function getRelatedRepairs(vehicleType, repairType) {
     })
     .then(response => response.json())
     .then(data => {
+        new_repairs = data;
         rec_box(data);
     })
     .catch(error => console.error('Error:', error));
