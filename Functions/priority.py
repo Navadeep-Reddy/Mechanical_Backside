@@ -13,8 +13,12 @@ class PriorityQueue:
 
     @staticmethod
     def priority_key(jobcard):
-        # Convert delivery date string to a datetime object
-        delivery_date = datetime.strptime(jobcard.delivery_date, "%Y-%m-%d")
+        try:
+            # Convert delivery date string to a datetime object
+            delivery_date = datetime.strptime(jobcard.delivery_date, "%Y-%m-%d")
+        except ValueError:
+            # If the date is malformed or empty, use a default far future date
+            delivery_date = datetime.max
         # Emergency jobs are given the highest priority
         emergency_priority = 0 if jobcard.emergency_state == "on" else 1
         return (emergency_priority, delivery_date)
@@ -25,7 +29,10 @@ def alljobcards():
 
     with open("Data/" + file_name, "r", newline="") as file:
         reader = csv.reader(file)
+        next(reader)  # Skip header if there is one
         for row in reader:
+            if len(row) != 7:
+                continue  # Skip rows that don't have exactly 7 columns
             username, vehicle, repair, engine_no, reg_no, delivery_date, emergency_state = row
             jobcard_object = JobCard(username, vehicle, repair, engine_no, reg_no, delivery_date, emergency_state)
             jobcards_objects.append(jobcard_object)
