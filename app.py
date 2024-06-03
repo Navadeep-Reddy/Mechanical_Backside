@@ -156,5 +156,3 @@ def pending():
         # Get the earliest submitted request
         First_Job = user_jobs[0]
         return render_template('pending.html', name=about_name, Vehicle_Type=First_Job.vehicle, Repair_Type=First_Job.repair, Engine_No=First_Job.engine_no, Registration_No=First_Job.reg_no, Est_Date=First_Job.delivery_date)
-
-

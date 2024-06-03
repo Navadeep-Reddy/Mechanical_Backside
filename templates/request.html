@@ -1,59 +1,69 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Welcome!</title>
-        <link rel ="stylesheet" href="static/request/style.css">
-        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    </head>
+<head>
+    <title>Welcome!</title>
+    <link rel ="stylesheet" href="static/request/style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
 
-    <body>
-        <header class = "header">
-            <a href = "#" class = "logo">SK MECHANICS.</a>
-            <nav class = "navbar">
-                <a href = "{{url_for('index')}}" >Home</a>
-                <a href = "{{url_for('about')}}">About</a>
-                <a href = "{{url_for('pending')}}" >Pending</a>
-            </nav>
-            <div class = "icons">
-                <a href = "#"><i class='bx bxs-phone'></i></a>
-            </div>
-        </header>
-        <section class = "home">
-            <form class = "request" method = "post" action ="{{url_for('make_request')}}">
-                <h1>Select Service</h1>
+<body>
+    <header class="header">
+        <a href="#" class="logo">SK MECHANICS.</a>
+        <nav class="navbar">
+            <a href="{{url_for('index')}}">Home</a>
+            <a href="{{url_for('about')}}">About</a>
+            <a href="{{url_for('pending')}}">Pending</a>
+        </nav>
+        <div class="icons">
+            <a href="#"><i class='bx bxs-phone'></i></a>
+        </div>
+    </header>
+    <section class="home">
+        <form class="request" method="post" action="{{url_for('make_request')}}">
+            <h1>Select Service</h1>
 
-                <div class ="dropDown">
-                <select name = "vtype" id = "vtype">
+            <div class="dropDown">
+                <select name="vtype" id="vtype">
                     <option disabled selected value="Vehicle">Vehicle</option>
                     <option>Motorcycle</option>
                     <option>Car</option>
                     <option>Bicycle</option>
                 </select>
-                <select name = "repair" id = "repair">
+                <select name="repair" id="repair">
                     <option disabled selected value="Repair">Repair</option>
                 </select>
-                </div>
+            </div>
 
-                <div class = "number-input">
-                    <input placeholder="Engine no" name ="eng_no">
-                    <input placeholder="Reg no" name="reg_no">
-                </div>
+            <div class="number-input">
+                <input placeholder="Engine no" name="eng_no">
+                <input placeholder="Reg no" name="reg_no">
+            </div>
 
-                <div class = "date">
-                    <label for="birthday">Expected Delivery Date : </label>
-                    <input type="date" id="birthday" name="date">   
-                </div>
+            <div class="date">
+                <label for="birthday">Expected Delivery Date : </label>
+                <input type="date" id="birthday" name="date">   
+            </div>
 
-                <label class = "boxy" >
-                    <p>Emergency? </p>
-                    <input id = "emergency" type="checkbox" name = "emergency">
-                </label>
+            <label class="boxy">
+                <p>Emergency? </p>
+                <input id="emergency" type="checkbox" name="emergency">
+            </label>
 
-                <h3 id = "message">{{confirm}}</h3>
-                <button type="submit" id = "apply">APPLY</button>
-
-            </form>
-        </section>
-    <script src = "static/request/index.js"></script>
-    </body>
+            <h3 id="message">{{confirm}}</h3>
+            <button type="submit" id="apply">APPLY</button>
+        </form>
+    </section>
+    <script src="static/request/index.js"></script>
+    <script>
+        // Set the min attribute of the date input to today's date
+        document.addEventListener('DOMContentLoaded', function() {
+            var today = new Date();
+            var yyyy = today.getFullYear();
+            var mm = String(today.getMonth() + 1).padStart(2, '0'); // Months are zero-based
+            var dd = String(today.getDate()).padStart(2, '0');
+            var minDate = yyyy + '-' + mm + '-' + dd;
+            document.getElementById('birthday').setAttribute('min', minDate);
+        });
+    </script>
+</body>
 </html>
