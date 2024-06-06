@@ -5,6 +5,13 @@ const apply = document.querySelector("#apply");
 const section = document.querySelector(".home");
 let new_repairs = [];
 
+document.addEventListener("DOMContentLoaded", function() {
+    const dateInput = document.getElementById("date");
+    const today = new Date().toISOString().split('T')[0];
+    dateInput.setAttribute('min', today);
+});
+
+
 function display() {
     if (vType.value !== "Vehicle" && repair.value !== "Repair") {
         message.textContent = "You have selected " + vType.value + " and " + repair.value;

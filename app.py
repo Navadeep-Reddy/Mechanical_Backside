@@ -74,9 +74,10 @@ def create_account():
         #getting values of new account
         new_username = request.form.get("user", "Error")
         new_password = request.form.get("password", "No")
+        new_email = request.form.get("email", "Invalid")
 
         #writing new values into file
-        new_user_log(new_username, new_password)
+        new_user_log(new_username, new_password, new_email)
 
         #updating dictionary after new account
         userpass=UserDetails()
@@ -110,8 +111,11 @@ def make_request():
         #setting default value of button to be off as on is the value we get when selected 
         emergency_state = request.form.get("emergency", "off")
 
+        #Temp email
+        email = "test@gmail.com"
+
         #Writing info of order into csv
-        orders_log(about_name, vehicle_type, repair_type, engine_no, reg_no, delivery_date, emergency_state)
+        orders_log(about_name, email, vehicle_type, repair_type, engine_no, reg_no, delivery_date, emergency_state)
 
         #Render the same page with the updated message
         return render_template("request.html", confirm = "Your Order Has Been Noted")
