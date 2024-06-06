@@ -2,6 +2,7 @@
 from flask import Flask, render_template, request, jsonify, url_for
 
 from Functions.read_prog import alljobcards
+from Functions.deletion import delete_jobcard
 
 import os
 os.chdir(os.path.dirname(os.getcwd()))
@@ -19,7 +20,8 @@ def orders():
 
         name = request.form.get("customer_name")
         date = request.form.get("date")
-        print(name, date)
+        
+        delete_jobcard(name, date)
 
         return render_template("orders.html", order_url = url_for('orders'))
     
