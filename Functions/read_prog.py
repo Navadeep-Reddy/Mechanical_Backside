@@ -1,3 +1,4 @@
+from Functions.priority import PriorityQueue
 import csv
 from Functions.jobcard import JobCard
 def UserDetails():
@@ -17,14 +18,17 @@ def alljobcards():
     file_name = "jobcards.csv"
     jobcards_objects = []
 
-    with open("Data/" + file_name, "r", newline="") as file:
+    with open("Data/jobcards.csv", "r", newline="") as file:
         reader = csv.reader(file)
         for row in reader:
             username, email, vehicle, repair,  engine_no, reg_no, delivery_date, emergency_state = row
             jobcard_object = JobCard(username, email, vehicle, repair,  engine_no, reg_no, delivery_date, emergency_state)
             jobcards_objects.append(jobcard_object)
 
-    return jobcards_objects
+    # Create a PriorityQueue object and sort jobcards
+    pq = PriorityQueue(jobcards_objects)
+    sorted_jobcards = pq.sort_jobcards()
+    return sorted_jobcards
 
 def get_current_email(name):
     with open("Data/user_log.txt","r") as f:
