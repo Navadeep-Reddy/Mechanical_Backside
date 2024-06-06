@@ -11,5 +11,9 @@ def orders():
         return render_template("orders.html")
     
     if request.method == "POST":
+
+        name = request.form.get("customer_name")
+        
+
         return render_template("orders.html", order_url = url_for('orders'))
     

@@ -13,6 +13,11 @@ document.addEventListener('DOMContentLoaded', function() {
             <td class="center-button">
                 <div class="order-actions">
                     <form action="${orderUrl}" method="POST">
+                        <input type="hidden" name="customer_name" value="${customerName}">
+                        <input type="hidden" name="vehicle" value="${vehicle}">
+                        <input type="hidden" name="service" value="${service}">
+                        <input type="hidden" name="registration_no" value="${registrationNo}">
+                        <input type="hidden" name="date" value="${date}">
                         <button type="submit" class="completed">Completed</button>
                     </form>
                 </div>
