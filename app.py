@@ -3,8 +3,8 @@ from flask import Flask, render_template, request, jsonify
 
 #importing functions from another file
 from Functions.write import new_user_log, orders_log
-from Functions.read_prog import UserDetails,alljobcards
-from Functions.graphs import bike_graph,  car_graph, cycle_graph 
+from Functions.read_prog import UserDetails, alljobcards, get_current_email
+from Functions.graphs import bike_graph, car_graph, cycle_graph 
 
 #Dictionary that stores the usernames and passwords
 userpass=UserDetails()
@@ -111,8 +111,8 @@ def make_request():
         #setting default value of button to be off as on is the value we get when selected 
         emergency_state = request.form.get("emergency", "off")
 
-        #Temp email
-        email = "test@gmail.com"
+        #Get current user's email
+        email = get_current_email(about_name)
 
         #Writing info of order into csv
         orders_log(about_name, email, vehicle_type, repair_type, engine_no, reg_no, delivery_date, emergency_state)

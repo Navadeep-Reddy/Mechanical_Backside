@@ -25,3 +25,11 @@ def alljobcards():
             jobcards_objects.append(jobcard_object)
 
     return jobcards_objects
+
+def get_current_email(name):
+    with open("Data/user_log.txt","r") as f:
+        text = f.readlines()
+        for line in text:
+            L = line.split()
+            if L[0] == name:
+                return L[2]
