@@ -1,15 +1,16 @@
+
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
-def send_mail(user_email):
+def send_mail(user_email,about_name,vehicle_type,repair_type):
     # Email content
-    from_email = "skmechanics@gmail.com"  
-    from_password = " " # This is the app password of the mail  
+    from_email = "rishwanth605@gmail.com"  
+    from_password = "aqhb qplg qbks bqkw" # This is the app password of the mail  
     to_email = user_email
 
     subject = "Order Completed"
-    body = f"Hello,\n\nYour order has been completed.\n\nThank you for choosing our service!\n\nBest regards,\nSK Mechanics"
+    body = f"Hello{about_name},\n\nYour{repair_type} order for your {vehicle_type} has been completed.\n\nThank you for choosing our service!\n\nBest regards,\nSK Mechanics"
 
     # Setup the MIME
     message = MIMEMultipart()
