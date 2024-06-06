@@ -1,8 +1,9 @@
 #Importing modules for mechanic login
 from flask import Flask, render_template, request, jsonify, url_for
 
-from Functions.read_prog import alljobcards
+from Functions.read_prog import alljobcards, get_current_email
 from Functions.deletion import delete_jobcard
+from Functions.mail import send_mail
 
 import os
 os.chdir(os.path.dirname(os.getcwd()))
@@ -20,8 +21,12 @@ def orders():
 
         name = request.form.get("customer_name")
         date = request.form.get("date")
+        vehicle = request.form.get("vehicle")
+        service = request.form.get("service")
+        email = get_current_email(name)
         
-
+        send_mail(email, name, vehicle, service)
+        
         delete_jobcard(name, date)
 
         return render_template("orders.html", order_url = url_for('orders'))
