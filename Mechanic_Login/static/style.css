@@ -87,6 +87,7 @@ th {
 .completed {
     background: #3e3ec4;
     color: white;
+    font-weight: 405;
     border: 2px solid #3e3ec4;
     transition: 0.3s;
     padding: 5px;
