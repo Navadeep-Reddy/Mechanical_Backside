@@ -6,13 +6,13 @@ document.addEventListener('DOMContentLoaded', function() {
         const list = await User_Details();
         console.log(list);
         list.forEach(item => {
-            addOrder(item[0], item[1], item[2], item[3], item[4]);
+            addOrder(item[0], item[1], item[2], item[3], item[4], item[5]);
         });
     }
 
     addOrders();
 
-    function addOrder(customerName, vehicle, service, registrationNo, date) {
+    function addOrder(customerName, vehicle, service, registrationNo, date, emergency) {
         const row = document.createElement('tr');
         row.innerHTML = `
             <td>${customerName}</td>
@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <td>${service}</td>
             <td>${registrationNo}</td>
             <td>${date}</td>
+            <td>${emergency}</td>
             <td class="center-button">
                 <div class="order-actions">
                     <form action="${orderUrl}" method="POST">

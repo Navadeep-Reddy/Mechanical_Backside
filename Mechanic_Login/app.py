@@ -42,7 +42,7 @@ def get_jobs():
     Data = []
 
     for card in jobcards:
-        Data.append([card.username, card.vehicle, card.repair, card.reg_no, card.delivery_date])
+        Data.append([card.username, card.vehicle, card.repair, card.reg_no, card.delivery_date, card.emergency_state])
         
     return jsonify(Data)
     
